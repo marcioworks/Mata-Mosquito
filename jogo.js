@@ -26,7 +26,7 @@ if(document.getElementById('mosquito')){
     document.getElementById('mosquito').remove()   
 
     if(vidas > 3){
-        alert('Game Over')
+       window.location.href = "fim-de-jogo.html"
     }
     else{
         console.log('coracao afetado '+ vidas)
