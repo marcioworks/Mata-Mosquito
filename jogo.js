@@ -1,5 +1,6 @@
 var largura = 0
 var altura = 0
+var vidas = 1
 
 function ajustarTamanhoPalco(){
     altura = window.innerHeight
@@ -14,6 +15,7 @@ function posicaoRandomica(){
 var posicaoX = Math.floor(Math.random() * largura)- 90
 var posicaoY = Math.floor(Math.random() * altura)- 90
 
+
 posicaoX = posicaoX < 0 ? 0 : posicaoX
 posicaoY = posicaoY < 0 ? 0 : posicaoY
 
@@ -22,6 +24,16 @@ console.log(posicaoX,posicaoY)
 //remover elemento anterior caso exista
 if(document.getElementById('mosquito')){
     document.getElementById('mosquito').remove()   
+
+    if(vidas > 3){
+        alert('Game Over')
+    }
+    else{
+        console.log('coracao afetado '+ vidas)
+        document.getElementById('v'+vidas).src = "imagens/coracao_vazio.png"
+
+        vidas++
+    }
 }
 
 //criar elemento html
@@ -32,6 +44,9 @@ mosquito.style.left = posicaoX + 'px'
 mosquito.style.top = posicaoY + 'px'
 mosquito.style.position = 'absolute' 
 mosquito.id ='mosquito'
+mosquito.onclick = function(){
+    this.remove()
+}
 document.body.appendChild(mosquito)
 
 
