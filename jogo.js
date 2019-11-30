@@ -19,6 +19,11 @@ posicaoY = posicaoY < 0 ? 0 : posicaoY
 
 console.log(posicaoX,posicaoY)
 
+//remover elemento anterior caso exista
+if(document.getElementById('mosquito')){
+    document.getElementById('mosquito').remove()   
+}
+
 //criar elemento html
 var mosquito = document.createElement('img')
 mosquito.src = 'imagens/Mosquito.png'
@@ -26,7 +31,9 @@ mosquito.className =tamanhoAleatorio()+ ' '+ ladoAleatorio()
 mosquito.style.left = posicaoX + 'px'
 mosquito.style.top = posicaoY + 'px'
 mosquito.style.position = 'absolute' 
+mosquito.id ='mosquito'
 document.body.appendChild(mosquito)
+
 
 }
 
@@ -54,3 +61,5 @@ function ladoAleatorio(){
             return 'ladoB'
     }
 }
+
+
