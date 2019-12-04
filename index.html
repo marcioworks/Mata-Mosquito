@@ -3,31 +3,55 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Mata Mosquito</title>
+    <title>Inicio</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="jogo.css"/>
-    <script src='jogo.js'></script>
+   <script>
+       function iniciarJogo (){
+        var nivel = document.getElementById('nivel').value
+        if(nivel === ''){
+            alert('selecione um nivel.')
+            return false
+        }
+        window.location.href = 'jogo.html?'+nivel
+       }
+   
+   </script>
 </head>
-<body onresize="ajustarTamanhoPalco()">
-
-    <div class="painel">
-            <div class="vidas">
-                <img id ="v1" src="imagens/coracao_cheio.png"/>
-                <img id ="v2" src="imagens/coracao_cheio.png"/>
-                <img id ="v3" src="imagens/coracao_cheio.png"/>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <img src="imagens/game.png"/>
+                </div>
             </div>
+        </div>
 
-            <div class="cronometro"> Tempo Restante:?
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <div class="mb-2">
+                        <select class="form-control" id="nivel">
+                            <option value="">Selecione a Dificuldade</option>
+                            <option value="normal">Normal</option>
+                            <option value="dificil">Dificil</option>
+                            <option value="chucknorris">Chuck Norris</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-danger btn-lg" onclick="iniciarJogo()">Iniciar Jogo</button>
+                    </div>
+                </div>
             </div>
     </div>
-   
     
-
-    <script>
-        setInterval(function(){
-            posicaoRandomica()
-        },2000)
-    </script>
 </body>
 </html>

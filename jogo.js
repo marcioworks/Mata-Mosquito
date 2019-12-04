@@ -1,15 +1,44 @@
 var largura = 0
 var altura = 0
 var vidas = 1
+var tempo = 15
+
+var criaMosquitoTempo = 1500
+
+var nivel = window.location.search
+nivel = nivel.replace('?','')
+
+if(nivel === 'normal'){
+    criaMosquitoTempo = 1500
+}
+else if(nivel === 'dificil'){
+    criaMosquitoTempo = 1000
+}
+else if(nivel === 'chucknorris'){
+    criaMosquitoTempo = 750
+}
 
 function ajustarTamanhoPalco(){
     altura = window.innerHeight
     largura = window.innerWidth
 
-    console.log(largura,altura)
 }
 
 ajustarTamanhoPalco()
+
+var cronometro = setInterval(function(){
+    tempo -=1
+
+    if(tempo < 0){
+        clearInterval(cronometro)
+        clearInterval(criaMosquito)
+        window.location.href = "vitoria.html"
+    }
+    else{
+        document.getElementById('cronometro').innerHTML = tempo
+    }
+
+},1000)
 
 function posicaoRandomica(){
 var posicaoX = Math.floor(Math.random() * largura)- 90
@@ -25,7 +54,7 @@ console.log(posicaoX,posicaoY)
 if(document.getElementById('mosquito')){
     document.getElementById('mosquito').remove()   
 
-    if(vidas > 3){
+    if(vidas >= 3){
        window.location.href = "fim_de_jogo.html"
     }
     else{
